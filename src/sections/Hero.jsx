@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "../components/Button";
 
 const STATS = [
-  { value: "500+", label: "Clients Served" },
+  { value: "50+", label: "Clients Served" },
   { value: "98%",  label: "Satisfaction Rate" },
   { value: "2+",  label: "Years Experience" },
 ];
@@ -13,45 +13,50 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 pt-16">
-      {/* Decorative blobs */}
-      <div className="absolute top-1/4 -left-32 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
-      <div className="absolute bottom-1/4 -right-32 h-96 w-96 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.25),_transparent_30%),linear-gradient(135deg,_#020617_0%,_#0f172a_50%,_#111827_100%)] pt-16">
+      {/* Decorative geometry */}
+      <div className="absolute top-1/4 -left-24 h-72 w-72 rounded-full border border-cyan-400/20 bg-cyan-400/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div className="absolute bottom-1/4 -right-20 h-80 w-80 rounded-full border border-blue-400/20 bg-blue-400/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div className="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
+        <div className="absolute left-10 top-20 h-24 w-24 rotate-12 border border-cyan-400/40"></div>
+        <div className="absolute right-16 top-24 h-16 w-16 rotate-45 border border-blue-400/40"></div>
+        <div className="absolute bottom-24 left-1/3 h-20 w-20 rotate-6 border border-cyan-400/30"></div>
+      </div>
 
       <div className="container-max section-padding w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Copy */}
           <div className="flex flex-col gap-6">
-            <span className="inline-flex items-center gap-2 self-start rounded-full bg-blue-600/20 border border-blue-500/30 px-4 py-1.5 text-xs font-semibold text-blue-300 uppercase tracking-wider">
-              <i className="fa-solid fa-circle-dot text-blue-400 animate-pulse"></i>
+            <span className="inline-flex items-center gap-2 self-start rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-300 shadow-[0_0_25px_rgba(34,211,238,0.2)]">
+              <i className="fa-solid fa-circle-dot text-cyan-400 animate-pulse"></i>
               Now serving 50+ global clients
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-white">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] text-white drop-shadow-[0_0_30px_rgba(34,211,238,0.18)]">
               Build Smarter.<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-fuchsia-500">
                 Scale Faster.
               </span>
             </h1>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-lg">
+            <p className="max-w-lg text-lg leading-relaxed text-slate-300">
               Techsab partners with ambitious teams to design, build, and deploy technology that moves the business forward — from first prototype to production scale.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/register">
-                <Button variant="primary" className="text-base px-8 py-3.5">
+                <Button variant="primary" className="text-base px-8 py-3.5 shadow-[0_0_25px_rgba(59,130,246,0.35)]">
                   Start Your Project <i className="fa-solid fa-arrow-right"></i>
                 </Button>
               </Link>
-              <Button variant="secondary" onClick={scrollToServices} className="text-base px-8 py-3.5 bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/50">
+              <Button variant="secondary" onClick={scrollToServices} className="text-base px-8 py-3.5 border border-cyan-400/40 bg-slate-950/90 text-cyan-100 shadow-[0_0_20px_rgba(34,211,238,0.15)] hover:bg-cyan-400/15 hover:border-cyan-300 hover:text-white">
                 See What We Do
               </Button>
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-8 pt-4 border-t border-white/10 mt-2">
+            <div className="mt-2 flex flex-wrap gap-8 border-t border-white/10 pt-4">
               {STATS.map((s) => (
                 <div key={s.label}>
                   <p className="text-2xl font-bold text-white">{s.value}</p>
-                  <p className="text-xs text-gray-400">{s.label}</p>
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -60,7 +65,7 @@ export default function Hero() {
           {/* Visual placeholder */}
           <div className="hidden lg:flex items-center justify-center">
             <div className="relative">
-              <div className="h-80 w-80 rounded-3xl bg-gradient-to-br from-blue-600/30 to-cyan-500/20 border border-white/10 flex items-center justify-center shadow-2xl">
+              <div className="flex h-80 w-80 items-center justify-center rounded-[2rem] border border-cyan-400/30 bg-gradient-to-br from-cyan-500/20 via-slate-900/60 to-blue-600/20 shadow-[0_0_50px_rgba(34,211,238,0.2)] backdrop-blur-sm">
                 <div className="grid grid-cols-2 gap-4 p-8">
                   {[
                     { icon: "fa-brain", label: "AI" },
@@ -68,21 +73,21 @@ export default function Hero() {
                     { icon: "fa-shield-halved", label: "Security" },
                     { icon: "fa-chart-line", label: "Analytics" },
                   ].map((item) => (
-                    <div key={item.label} className="flex flex-col items-center gap-2 rounded-2xl bg-white/10 p-5 hover:bg-white/20 transition-colors">
-                      <i className={`fa-solid ${item.icon} text-2xl text-blue-300`}></i>
-                      <span className="text-xs text-gray-300 font-medium">{item.label}</span>
+                    <div key={item.label} className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/10 p-5 transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-400/15">
+                      <i className={`fa-solid ${item.icon} text-2xl text-cyan-300`}></i>
+                      <span className="text-xs font-medium uppercase tracking-[0.25em] text-slate-300">{item.label}</span>
                     </div>
                   ))}
                 </div>
               </div>
               {/* Floating badge */}
-              <div className="absolute -bottom-4 -left-4 rounded-2xl bg-white p-4 shadow-xl flex items-center gap-3">
-                <div className="h-10 w-10 rounded-xl bg-green-100 flex items-center justify-center">
-                  <i className="fa-solid fa-check text-green-600"></i>
+              <div className="absolute -bottom-4 -left-4 flex items-center gap-3 rounded-2xl border border-emerald-400/30 bg-slate-900/80 p-4 shadow-[0_0_25px_rgba(16,185,129,0.2)]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400">
+                  <i className="fa-solid fa-check"></i>
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-900">Project Delivered</p>
-                  <p className="text-xs text-gray-500">3 days ahead of schedule</p>
+                  <p className="text-xs font-bold text-white">Project Delivered</p>
+                  <p className="text-xs text-slate-400">3 days ahead of schedule</p>
                 </div>
               </div>
             </div>
@@ -93,10 +98,10 @@ export default function Hero() {
       {/* Scroll cue */}
       <button
         onClick={scrollToServices}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-400 hover:text-white transition-colors"
+        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-slate-400 transition-colors hover:text-cyan-300"
         aria-label="Scroll to services"
       >
-        <span className="text-xs font-medium">Scroll</span>
+        <span className="text-xs font-medium uppercase tracking-[0.3em]">Scroll</span>
         <i className="fa-solid fa-chevron-down animate-bounce"></i>
       </button>
     </section>

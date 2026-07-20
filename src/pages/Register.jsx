@@ -68,7 +68,7 @@ export default function Register() {
           </Link>
           <h2 className="text-3xl font-extrabold mb-4">Start building today</h2>
           <p className="text-gray-400 leading-relaxed">
-            Join 500+ companies that use Techsab to build faster and scale with confidence.
+            Join 50+ companies that use Techsab to build faster and scale with confidence.
           </p>
           <div className="mt-12 grid grid-cols-2 gap-4">
             {[

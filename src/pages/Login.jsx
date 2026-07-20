@@ -48,7 +48,7 @@ export default function Login() {
             Log in to access your dashboard, manage projects, and track your team's progress in real time.
           </p>
           <div className="mt-12 flex flex-col gap-4">
-            {["500+ businesses trust Techsab", "Enterprise-grade security", "24/7 dedicated support"].map((t) => (
+            {["50+ businesses trust Techsab", "Enterprise-grade security", "24/7 dedicated support"].map((t) => (
               <div key={t} className="flex items-center gap-3 text-sm text-gray-300">
                 <i className="fa-solid fa-check text-blue-400"></i> {t}
               </div>
