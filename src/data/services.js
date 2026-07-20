@@ -1,5 +1,12 @@
 const services = [
   {
+    id: 9,
+    icon: "fa-solid fa-globe",
+    title: "Website Development",
+    description:
+      "Launch polished, high-converting websites with custom UI, responsive layouts, and performance-focused development that scales as your brand grows.",
+  },
+  {
     id: 1,
     icon: "fa-solid fa-brain",
     title: "AI Strategy",
@@ -36,13 +43,27 @@ const services = [
   },
   {
     id: 6,
-    icon: "fa-solid fa-globe",
-    title: "Website Development",
+    icon: "fa-solid fa-calculator",
+    title: "Accounting and Tax Solutions",
     description:
-      "Launch polished, high-converting websites with custom UI, responsive layouts, and performance-focused development that scales as your brand grows.",
+      "Comprehensive accounting, tax planning, and compliance support tailored to your business needs so your finances stay accurate, efficient, and audit-ready.",
   },
   {
     id: 7,
+    icon: "fa-solid fa-book",
+    title: "Bookkeeping",
+    description:
+      "Reliable day-to-day bookkeeping, reconciliations, and financial record management to keep your books clean and your reporting up to date.",
+  },
+  {
+    id: 8,
+    icon: "fa-solid fa-desktop",
+    title: "Desktop Application Based Software",
+    description:
+      "Custom desktop software built for finance, operations, and internal workflows with dependable performance, secure data handling, and offline capability where needed.",
+  },
+  {
+    id: 10,
     icon: "fa-solid fa-headset",
     title: "Technical Support",
     description:

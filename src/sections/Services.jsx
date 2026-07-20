@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import services from "../data/services";
 import ServiceCard from "../components/ServiceCard";
 import PricingModal from "../components/PricingModal";
 
 export default function Services() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const servicesRowRef = useRef(null);
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
+
+  const scrollServices = (direction) => {
+    if (!servicesRowRef.current) return;
+    const amount = window.innerWidth < 640 ? 280 : 340;
+    servicesRowRef.current.scrollBy({
+      left: direction === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <section id="services" className="section-padding bg-white">
@@ -22,17 +32,43 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((s) => (
-            <ServiceCard
-              key={s.id}
-              icon={s.icon}
-              title={s.title}
-              description={s.description}
-              showPricingButton={s.title === "Website Development"}
-              onPricingClick={handleOpenModal}
-            />
-          ))}
+        <div className="relative">
+          <div className="mb-4 flex items-center justify-end gap-2">
+            <button
+              type="button"
+              onClick={() => scrollServices("left")}
+              className="rounded-full border border-gray-200 bg-white p-2.5 text-gray-600 shadow-sm transition hover:border-blue-500 hover:text-blue-600"
+              aria-label="Scroll services left"
+            >
+              <i className="fa-solid fa-chevron-left"></i>
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollServices("right")}
+              className="rounded-full border border-gray-200 bg-white p-2.5 text-gray-600 shadow-sm transition hover:border-blue-500 hover:text-blue-600"
+              aria-label="Scroll services right"
+            >
+              <i className="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <div
+            ref={servicesRowRef}
+            className="flex gap-6 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory"
+            style={{ scrollbarWidth: "none" }}
+          >
+            {services.map((s) => (
+              <div key={s.id} className="min-w-[280px] sm:min-w-[320px] snap-start">
+                <ServiceCard
+                  icon={s.icon}
+                  title={s.title}
+                  description={s.description}
+                  showPricingButton={s.title === "Website Development"}
+                  onPricingClick={handleOpenModal}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* CTA strip */}

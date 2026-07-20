@@ -56,7 +56,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs">© {new Date().getFullYear()} Techsab Inc. All rights reserved.</p>
-          <p className="text-xs">Built with <i className="fa-solid fa-heart text-red-500 mx-1"></i> using React & Tailwind CSS</p>
+          
         </div>
       </div>
     </footer>
