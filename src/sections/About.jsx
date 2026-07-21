@@ -28,23 +28,63 @@ export default function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           {/* Visual */}
-          <div className="relative">
-            <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-cyan-500 aspect-[4/3] flex items-center justify-center shadow-2xl overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="grid grid-cols-3 gap-3 p-8 opacity-20">
-                  {Array.from({ length: 9 }).map((_, i) => (
-                    <div key={i} className="h-16 w-16 rounded-2xl bg-white"></div>
-                  ))}
+          <div className="scale-card-wrap relative z-10 lg:aspect-[4/3]">
+            <div
+              className="scale-flip-card min-h-[500px] sm:min-h-[440px] lg:h-full lg:min-h-0"
+              tabIndex={0}
+              aria-label="Built to Scale. Hover or focus to learn more."
+            >
+              <div className="scale-flip-content">
+                <div className="scale-flip-face scale-flip-front">
+                  <div className="scale-flip-glow scale-flip-glow-one"></div>
+                  <div className="scale-flip-glow scale-flip-glow-two"></div>
+                  <div className="relative z-10 text-center text-white p-8">
+                    <i className="fa-solid fa-rocket text-6xl mb-4 opacity-90"></i>
+                    <p className="text-xl font-bold">Built to Scale</p>
+                    <p className="text-sm text-blue-100 mt-2">Enterprise-grade from day one</p>
+                  </div>
                 </div>
-              </div>
-              <div className="relative z-10 text-center text-white p-8">
-                <i className="fa-solid fa-rocket text-6xl mb-4 opacity-90"></i>
-                <p className="text-xl font-bold">Built to Scale</p>
-                <p className="text-sm opacity-80 mt-2">Enterprise-grade from day one</p>
+                <div className="scale-flip-face scale-flip-back">
+                  <div className="scale-flip-border" aria-hidden="true"></div>
+                  <div className="scale-flip-back-content">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-400/15 text-2xl text-cyan-300">
+                      <i className="fa-solid fa-code"></i>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">Built to Scale</h3>
+                    <p className="max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
+                      From startup MVPs to enterprise platforms, we develop flexible, maintainable, and high-performance applications that grow alongside your business.
+                    </p>
+                    <div className="grid w-full max-w-4xl gap-3 text-left sm:grid-cols-2">
+                      <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                        <h3 className="mb-1 font-bold text-cyan-300">Our Mission</h3>
+                        <p className="text-xs leading-relaxed text-slate-300 sm:text-sm">
+                          To democratise access to world-class technology by building products that are reliable, intuitive, and built to last — regardless of a company's size or stage.
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                        <h3 className="mb-1 font-bold text-blue-300">Our Vision</h3>
+                        <p className="text-xs leading-relaxed text-slate-300 sm:text-sm">
+                          A world where every business, from a startup in Kathmandu to an enterprise in New York, has access to technology that genuinely moves them forward.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="grid w-full max-w-4xl gap-2 text-left sm:grid-cols-3">
+                      {VALUES.map((value) => (
+                        <div key={value.title} className="rounded-xl border border-cyan-400/10 bg-cyan-400/5 p-3">
+                          <div className="mb-1 flex items-center gap-2">
+                            <i className={`${value.icon} text-xs text-cyan-300`}></i>
+                            <h4 className="text-xs font-semibold text-white sm:text-sm">{value.title}</h4>
+                          </div>
+                          <p className="text-[11px] leading-relaxed text-slate-400 sm:text-xs">{value.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             {/* Floating card */}
-            <div className="absolute -right-6 top-8 rounded-2xl bg-white p-4 shadow-xl border border-gray-100">
+            <div className="scale-cert-badge absolute -right-6 top-8 rounded-2xl bg-white p-4 shadow-xl border border-gray-100">
               <div className="flex items-center gap-3">
                 <div className="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center">
                   <i className="fa-solid fa-shield-halved text-blue-600"></i>

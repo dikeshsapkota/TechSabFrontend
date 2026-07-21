@@ -46,7 +46,7 @@ export default function Hero() {
                   Start Your Project <i className="fa-solid fa-arrow-right"></i>
                 </Button>
               </Link>
-              <Button variant="secondary" onClick={scrollToServices} className="text-base px-8 py-3.5 border border-cyan-400/40 bg-slate-950/90 text-cyan-100 shadow-[0_0_20px_rgba(34,211,238,0.15)] hover:bg-cyan-400/15 hover:border-cyan-300 hover:text-white">
+              <Button variant="secondary" onClick={scrollToServices} className="text-base px-8 py-3.5 border border-white/20 bg-transparent text-black shadow-none hover:bg-cyan-400/15 hover:border-cyan-300 hover:text-white hover:shadow-[0_0_20px_rgba(34,211,238,0.15)]">
                 See What We Do
               </Button>
             </div>
@@ -66,16 +66,16 @@ export default function Hero() {
           <div className="hidden lg:flex items-center justify-center">
             <div className="relative">
               <div className="flex h-80 w-80 items-center justify-center rounded-[2rem] border border-cyan-400/30 bg-gradient-to-br from-cyan-500/20 via-slate-900/60 to-blue-600/20 shadow-[0_0_50px_rgba(34,211,238,0.2)] backdrop-blur-sm">
-                <div className="grid grid-cols-2 gap-4 p-8">
+                <div className="hero-tech-grid" aria-label="Technology services">
                   {[
                     { icon: "fa-brain", label: "AI" },
                     { icon: "fa-cloud", label: "Cloud" },
                     { icon: "fa-shield-halved", label: "Security" },
                     { icon: "fa-chart-line", label: "Analytics" },
                   ].map((item) => (
-                    <div key={item.label} className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/10 p-5 transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-400/15">
+                    <div key={item.label} className="hero-tech-card flex flex-col items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/10 p-5 hover:bg-cyan-400/15">
                       <i className={`fa-solid ${item.icon} text-2xl text-cyan-300`}></i>
-                      <span className="text-xs font-medium uppercase tracking-[0.25em] text-slate-300">{item.label}</span>
+                      <span className="text-xs font-medium uppercase tracking-[0.2em] text-slate-300">{item.label}</span>
                     </div>
                   ))}
                 </div>

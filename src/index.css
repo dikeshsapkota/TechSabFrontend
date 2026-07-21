@@ -14,3 +14,187 @@
   .section-padding { @apply py-20 px-4 sm:px-6 lg:px-8; }
   .container-max  { @apply max-w-7xl mx-auto; }
 }
+
+.hero-tech-grid {
+  position: relative;
+  width: 240px;
+  height: 216px;
+}
+
+.hero-tech-card {
+  position: absolute;
+  width: 112px;
+  height: 100px;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  will-change: transform;
+}
+
+.hero-tech-card:nth-child(1) { left: 0; top: 0; animation-name: orbit-top-left; }
+.hero-tech-card:nth-child(2) { right: 0; top: 0; animation-name: orbit-top-right; }
+.hero-tech-card:nth-child(3) { left: 0; bottom: 0; animation-name: orbit-bottom-left; }
+.hero-tech-card:nth-child(4) { right: 0; bottom: 0; animation-name: orbit-bottom-right; }
+
+@keyframes orbit-top-left {
+  0%, 15%, 100% { transform: translate(0, 0); }
+  30% { transform: translate(128px, 0); }
+  45%, 60% { transform: translate(128px, 116px); }
+  75% { transform: translate(0, 116px); }
+}
+
+@keyframes orbit-top-right {
+  0%, 15%, 100% { transform: translate(0, 0); }
+  30% { transform: translate(0, 116px); }
+  45%, 60% { transform: translate(-128px, 116px); }
+  75% { transform: translate(-128px, 0); }
+}
+
+@keyframes orbit-bottom-left {
+  0%, 15%, 100% { transform: translate(0, 0); }
+  30% { transform: translate(0, -116px); }
+  45%, 60% { transform: translate(128px, -116px); }
+  75% { transform: translate(128px, 0); }
+}
+
+@keyframes orbit-bottom-right {
+  0%, 15%, 100% { transform: translate(0, 0); }
+  30% { transform: translate(-128px, 0); }
+  45%, 60% { transform: translate(-128px, -116px); }
+  75% { transform: translate(0, -116px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-tech-card { animation: none; }
+}
+
+.scale-flip-card {
+  width: 100%;
+  overflow: visible;
+  perspective: 1200px;
+  border-radius: 1.5rem;
+  outline: none;
+  transition: width 500ms ease;
+}
+
+@media (min-width: 1024px) {
+  .scale-flip-card:hover,
+  .scale-flip-card:focus-visible {
+    width: calc(200% + 4rem);
+  }
+
+  .scale-card-wrap:has(.scale-flip-card:hover) .scale-cert-badge,
+  .scale-card-wrap:focus-within .scale-cert-badge {
+    right: calc(-100% - 4rem);
+  }
+}
+
+.scale-cert-badge {
+  z-index: 2;
+  transition: right 500ms ease;
+}
+
+.scale-flip-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 500ms ease;
+  border-radius: 1.5rem;
+  box-shadow: 0 24px 55px rgb(15 23 42 / 0.25);
+}
+
+.scale-flip-card:hover .scale-flip-content,
+.scale-flip-card:focus-visible .scale-flip-content {
+  transform: rotateY(180deg);
+}
+
+.scale-flip-card:focus-visible {
+  box-shadow: 0 0 0 4px rgb(14 165 233 / 0.3);
+}
+
+.scale-flip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.scale-flip-front {
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+}
+
+.scale-flip-back {
+  transform: rotateY(180deg);
+  background: #0f172a;
+}
+
+.scale-flip-border {
+  position: absolute;
+  width: 35%;
+  height: 180%;
+  background: linear-gradient(180deg, transparent, #22d3ee, #3b82f6, transparent);
+  animation: scale-border-spin 5s linear infinite;
+}
+
+.scale-flip-back-content {
+  position: absolute;
+  inset: 2px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 1.25rem;
+  border-radius: calc(1.5rem - 2px);
+  background: linear-gradient(145deg, #0f172a, #111827);
+  text-align: center;
+}
+
+.scale-flip-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(24px);
+  animation: scale-glow-float 3s ease-in-out infinite;
+}
+
+.scale-flip-glow-one {
+  width: 11rem;
+  height: 11rem;
+  left: 8%;
+  top: 12%;
+  background: rgb(103 232 249 / 0.35);
+}
+
+.scale-flip-glow-two {
+  width: 14rem;
+  height: 14rem;
+  right: 5%;
+  bottom: 3%;
+  background: rgb(30 64 175 / 0.4);
+  animation-delay: -1.5s;
+}
+
+@keyframes scale-border-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scale-glow-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(12px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scale-flip-card,
+  .scale-flip-content,
+  .scale-cert-badge { transition: none; }
+  .scale-flip-border,
+  .scale-flip-glow { animation: none; }
+}
