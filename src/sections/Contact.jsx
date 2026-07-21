@@ -109,11 +109,11 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <InputField id="name" label="Full Name" placeholder="Jane Smith" value={fields.name} onChange={update("name")} error={errors.name} icon="fa-solid fa-user" required />
-                  <InputField id="email" label="Email Address" type="email" placeholder="jane@example.com" value={fields.email} onChange={update("email")} error={errors.email} icon="fa-solid fa-envelope" required autoComplete="email" />
+                  <InputField id="name" label="Full Name" placeholder="Ram prasad upadhaya" value={fields.name} onChange={update("name")} error={errors.name} icon="fa-solid fa-user" required />
+                  <InputField id="email" label="Email Address" type="email" placeholder="hairkobuwa@example.com" value={fields.email} onChange={update("email")} error={errors.email} icon="fa-solid fa-envelope" required autoComplete="email" />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <InputField id="phone" label="Phone Number" type="tel" placeholder="+1 (555) 000-0000" value={fields.phone} onChange={update("phone")} error={errors.phone} icon="fa-solid fa-phone" />
+                  <InputField id="phone" label="Phone Number" type="tel" placeholder="+977-1000000000" value={fields.phone} onChange={update("phone")} error={errors.phone} icon="fa-solid fa-phone" />
                   <InputField id="subject" label="Subject" placeholder="How can we help?" value={fields.subject} onChange={update("subject")} error={errors.subject} icon="fa-solid fa-tag" required />
                 </div>
                 <div className="flex flex-col gap-1">
