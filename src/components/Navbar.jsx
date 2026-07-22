@@ -38,13 +38,12 @@ export default function Navbar() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur shadow-sm" : "bg-transparent"}`}>
       <nav className="container-max flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16" aria-label="Main navigation">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 font-bold text-xl text-blue-600">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white text-sm">
-            <i className="fa-solid fa-bolt"></i>
-          </span>
-          Techsab
-        </Link>
+<Link
+  to="/"
+  className="text-3xl font-black tracking-tight bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+>
+  Techsab
+</Link>
 
         {/* Desktop nav */}
         <ul className="hidden md:flex items-center gap-8">
