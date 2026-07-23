@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
 
@@ -31,22 +32,22 @@ function validate(fields) {
 export default function Contact() {
   const [fields, setFields]   = useState(INITIAL);
   const [errors, setErrors]   = useState({});
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [state, submitToFormspree, resetFormspree] = useForm("mvzewoej");
 
   const update = (key) => (e) => setFields((f) => ({ ...f, [key]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate(fields);
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSuccess(true);
+    await submitToFormspree(e);
+  };
+
+  const startAnotherMessage = () => {
+      resetFormspree();
       setFields(INITIAL);
-    }, 1200);
+      setErrors({});
   };
 
   return (
@@ -97,14 +98,14 @@ export default function Contact() {
 
           {/* Form */}
           <div className="lg:col-span-3 rounded-3xl bg-white border border-gray-100 p-8 shadow-sm">
-            {success ? (
+            {state.succeeded ? (
               <div className="flex flex-col items-center justify-center h-full gap-4 py-12 text-center">
                 <div className="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center">
                   <i className="fa-solid fa-circle-check text-green-600 text-3xl"></i>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Message sent!</h3>
                 <p className="text-gray-500 text-sm max-w-xs">Thanks for reaching out. We'll get back to you within one business day.</p>
-                <Button variant="ghost" onClick={() => setSuccess(false)}>Send another message</Button>
+                <Button variant="ghost" onClick={startAnotherMessage}>Send another message</Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
@@ -121,16 +122,19 @@ export default function Contact() {
                     Message <span className="text-red-500">*</span>
                   </label>
                   <textarea
-                    id="message" rows={5} placeholder="Tell us about your project or question..."
+                    id="message" name="message" rows={5} placeholder="Tell us about your project or question..."
                     value={fields.message} onChange={update("message")}
+                    required minLength={20}
                     aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined}
                     className={`w-full rounded-xl border px-4 py-3 text-sm text-gray-800 placeholder-gray-400 resize-none transition focus:outline-none focus:ring-2 focus:ring-blue-500
                       ${errors.message ? "border-red-400 bg-red-50" : "border-gray-200 bg-gray-50 hover:border-gray-300 focus:border-blue-500 focus:bg-white"}`}
                   />
                   {errors.message && <p id="message-error" role="alert" className="flex items-center gap-1 text-xs text-red-600"><i className="fa-solid fa-circle-exclamation"></i> {errors.message}</p>}
+                  <ValidationError field="message" errors={state.errors} className="text-xs text-red-600" />
                 </div>
-                <Button type="submit" disabled={loading} className="self-start px-8 py-3.5">
-                  {loading ? <><i className="fa-solid fa-spinner animate-spin"></i> Sending…</> : <><i className="fa-solid fa-paper-plane"></i> Send Message</>}
+                <ValidationError errors={state.errors} className="text-sm text-red-600" />
+                <Button type="submit" disabled={state.submitting} className="self-start px-8 py-3.5">
+                  {state.submitting ? <><i className="fa-solid fa-spinner animate-spin"></i> Sending…</> : <><i className="fa-solid fa-paper-plane"></i> Send Message</>}
                 </Button>
               </form>
             )}

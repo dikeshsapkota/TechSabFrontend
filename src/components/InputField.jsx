@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function InputField({
-  label, id, type = "text", placeholder, value, onChange, error,
+  label, id, name = id, type = "text", placeholder, value, onChange, error,
   icon, required = false, autoComplete,
 }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,10 +21,12 @@ export default function InputField({
         )}
         <input
           id={id}
+          name={name}
           type={inputType}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          required={required}
           autoComplete={autoComplete}
           aria-describedby={error ? `${id}-error` : undefined}
           aria-invalid={!!error}
