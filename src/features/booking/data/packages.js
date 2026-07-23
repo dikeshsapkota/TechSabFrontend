@@ -39,8 +39,9 @@ const packages = [
   {
     id: 3,
     name: "Advanced Website",
-    amount: 55000,
-    price: "Rs. 55,000",
+    amount: 48000,
+    price: "Rs. 48,000",
+    originalPrice: "Rs. 55,000",
     badge: "Best Value",
     featured: true,
     features: [

@@ -17,7 +17,12 @@ export default function PackageCard({ plan }) {
       <div className="space-y-5">
         <div>
           <h3 className="text-xl font-semibold text-gray-900">{plan.name}</h3>
-          <div className="mt-4 flex items-end gap-1">
+          {plan.originalPrice && (
+            <span className="mt-3 block text-lg font-semibold text-gray-400 line-through">
+              {plan.originalPrice}
+            </span>
+          )}
+          <div className={`${plan.originalPrice ? "mt-1" : "mt-4"} flex items-end gap-1`}>
             <span className="text-4xl font-bold tracking-tight text-blue-600">{plan.price}</span>
             <span className="pb-1 text-sm font-medium text-gray-500">/ project</span>
           </div>
