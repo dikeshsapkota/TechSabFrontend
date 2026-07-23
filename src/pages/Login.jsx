@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
+import Navbar from "../components/Navbar";
 
 const INITIAL = { email: "", password: "" };
 
@@ -32,7 +33,9 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex bg-gray-50">
+    <>
+      <Navbar />
+      <div className="min-h-screen flex bg-gray-50 pt-16">
       {/* Left panel */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 flex-col items-center justify-center p-16 text-white relative overflow-hidden">
         <div className="absolute top-1/3 -left-16 h-64 w-64 rounded-full bg-blue-600/20 blur-3xl" aria-hidden="true"></div>
@@ -117,6 +120,7 @@ export default function Login() {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function PricingCard({ plan, isHighlighted = false }) {
   return (
     <div
@@ -28,6 +30,9 @@ export default function PricingCard({ plan, isHighlighted = false }) {
             </li>
           ))}
         </ul>
+        <Link to={`/checkout?plan=${plan.id}`} className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700">
+          Checkout <i className="fa-solid fa-arrow-right" />
+        </Link>
       </div>
     </div>
   );
