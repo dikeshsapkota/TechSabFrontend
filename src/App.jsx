@@ -7,6 +7,9 @@ import ServiceDetail from "./pages/ServiceDetail";
 import WebsitePackages from "./pages/WebsitePackages";
 import Checkout from "./pages/Checkout";
 import PlaceOrder from "./pages/PlaceOrder";
+import AboutPage from "./pages/AboutPage";
+import ServicesPage from "./pages/ServicesPage";
+import ContactPage from "./pages/ContactPage";
 
 export default function App() {
   return (
@@ -14,6 +17,9 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />

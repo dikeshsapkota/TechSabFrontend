@@ -1,39 +1,22 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NAV_LINKS = [
-  { label: "Home",     href: "#home"     },
-  { label: "About",    href: "#about"    },
-  { label: "Services", href: "#services" },
-  { label: "Contact",  href: "#contact"  },
+  { label: "Home",     to: "/"         },
+  { label: "About",    to: "/about"    },
+  { label: "Services", to: "/services" },
+  { label: "Contact",  to: "/contact"  },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen]   = useState(false);
   const [scrolled, setScrolled]   = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const handleNavClick = (href) => {
-    setMenuOpen(false);
-    if (isHome) {
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    } else {
-      navigate("/");
-      setTimeout(() => {
-        const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    }
-  };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur shadow-sm" : "bg-transparent"}`}>
@@ -49,12 +32,14 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((l) => (
             <li key={l.label}>
-              <button
-                onClick={() => handleNavClick(l.href)}
-                className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+              <NavLink
+                to={l.to}
+                className={({ isActive }) => `text-sm font-medium transition-colors ${
+                  isActive ? "text-blue-600" : "text-gray-600 hover:text-blue-600"
+                }`}
               >
                 {l.label}
-              </button>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -86,12 +71,15 @@ export default function Navbar() {
           <ul className="flex flex-col px-4 py-4 gap-1">
             {NAV_LINKS.map((l) => (
               <li key={l.label}>
-                <button
-                  onClick={() => handleNavClick(l.href)}
-                  className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                <NavLink
+                  to={l.to}
+                  onClick={() => setMenuOpen(false)}
+                  className={({ isActive }) => `block w-full px-4 py-3 rounded-xl text-sm font-medium transition ${
+                    isActive ? "bg-blue-50 text-blue-600" : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                  }`}
                 >
                   {l.label}
-                </button>
+                </NavLink>
               </li>
             ))}
             <li className="border-t border-gray-100 mt-2 pt-2 flex flex-col gap-2">

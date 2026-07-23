@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import services from "../data/services";
 import ServiceCard from "../components/ServiceCard";
 
@@ -56,20 +57,13 @@ export default function Services() {
             </p>
           </div>
 
-          <a
-            href="#contact"
-            onClick={(event) => {
-              event.preventDefault();
-
-              document.querySelector("#contact")?.scrollIntoView({
-                behavior: "smooth",
-              });
-            }}
+          <Link
+            to="/contact"
             className="inline-flex flex-shrink-0 items-center gap-2 rounded-xl bg-white px-7 py-3 font-semibold text-blue-600 shadow-md transition-colors hover:bg-blue-50"
           >
             Book a Free Consultation
             <i className="fa-solid fa-arrow-right" aria-hidden="true" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

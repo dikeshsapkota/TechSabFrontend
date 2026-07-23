@@ -19,7 +19,7 @@ export default function ServiceDetail() {
     <SiteLayout>
       <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-blue-700 px-4 py-20 text-white">
         <div className="container-max">
-          <Link to="/#services" className="text-sm font-semibold text-blue-200 hover:text-white">
+          <Link to="/services" className="text-sm font-semibold text-blue-200 hover:text-white">
             <i className="fa-solid fa-arrow-left mr-2" />All services
           </Link>
           <div className="mt-10 max-w-3xl">
@@ -60,7 +60,7 @@ export default function ServiceDetail() {
             <h2 className="text-2xl font-bold">{isWebsite ? "Find the right website package" : `Ready to discuss ${service.title}?`}</h2>
             <p className="mt-2 text-blue-100">{isWebsite ? "Compare deliverables and choose a plan for your project." : "Tell us what you need and we’ll recommend the best next step."}</p>
           </div>
-          <Link to={isWebsite ? "/website-packages" : "/#contact"} className="mt-6 inline-flex rounded-xl bg-white px-6 py-3 font-semibold text-blue-700 sm:mt-0">
+          <Link to={isWebsite ? "/website-packages" : "/contact"} className="mt-6 inline-flex rounded-xl bg-white px-6 py-3 font-semibold text-blue-700 sm:mt-0">
             {isWebsite ? "View packages" : "Book a consultation"}
           </Link>
         </div>
