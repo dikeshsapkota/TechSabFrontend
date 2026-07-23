@@ -25,7 +25,6 @@ function validate(fields) {
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) errs.email = "Enter a valid email address.";
   if (!fields.subject.trim()) errs.subject = "Subject is required.";
   if (!fields.message.trim()) errs.message = "Message is required.";
-  else if (fields.message.trim().length < 20) errs.message = "Message must be at least 20 characters.";
   return errs;
 }
 
@@ -124,7 +123,7 @@ export default function Contact() {
                   <textarea
                     id="message" name="message" rows={5} placeholder="Tell us about your project or question..."
                     value={fields.message} onChange={update("message")}
-                    required minLength={20}
+                    required
                     aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined}
                     className={`w-full rounded-xl border px-4 py-3 text-sm text-gray-800 placeholder-gray-400 resize-none transition focus:outline-none focus:ring-2 focus:ring-blue-500
                       ${errors.message ? "border-red-400 bg-red-50" : "border-gray-200 bg-gray-50 hover:border-gray-300 focus:border-blue-500 focus:bg-white"}`}
