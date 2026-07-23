@@ -1,4 +1,4 @@
-const websitePackages = [
+const packages = [
   {
     id: 1,
     name: "Basic Website",
@@ -82,4 +82,4 @@ const websitePackages = [
   },
 ];
 
-export default websitePackages;
+export default packages;

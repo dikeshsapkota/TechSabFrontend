@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import { getCheckoutUrl } from "../booking";
 
-export default function PricingCard({ plan, isHighlighted = false }) {
+export default function PackageCard({ plan }) {
   return (
     <div
       className={`relative overflow-hidden rounded-3xl border bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
-        isHighlighted ? "border-blue-500 ring-2 ring-blue-100" : "border-gray-200"
+        plan.featured ? "border-blue-500 ring-2 ring-blue-100" : "border-gray-200"
       }`}
     >
       {plan.badge && (
@@ -30,7 +31,7 @@ export default function PricingCard({ plan, isHighlighted = false }) {
             </li>
           ))}
         </ul>
-        <Link to={`/checkout?plan=${plan.id}`} className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700">
+        <Link to={getCheckoutUrl(plan.id)} className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700">
           Checkout <i className="fa-solid fa-arrow-right" />
         </Link>
       </div>

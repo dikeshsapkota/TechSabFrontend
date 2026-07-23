@@ -1,5 +1,5 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import PageShell from "../components/PageShell";
+import SiteLayout from "../layouts/SiteLayout";
 import services from "../data/services";
 
 const outcomes = [
@@ -16,7 +16,7 @@ export default function ServiceDetail() {
   const isWebsite = service.slug === "website-development";
 
   return (
-    <PageShell>
+    <SiteLayout>
       <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-blue-700 px-4 py-20 text-white">
         <div className="container-max">
           <Link to="/#services" className="text-sm font-semibold text-blue-200 hover:text-white">
@@ -65,6 +65,6 @@ export default function ServiceDetail() {
           </Link>
         </div>
       </section>
-    </PageShell>
+    </SiteLayout>
   );
 }

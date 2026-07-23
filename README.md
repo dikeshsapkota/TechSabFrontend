@@ -36,11 +36,13 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ```
 src/
-├── components/     # Navbar, Footer, Button, InputField, ServiceCard
-├── sections/       # Hero, About, Services, Contact
-├── pages/          # Home, Login, Register
-├── data/           # services.js
-└── assets/
+├── components/         # Shared UI components
+├── data/               # Site-wide content
+├── features/
+│   └── booking/        # Packages, checkout rules, and booking UI
+├── layouts/            # Shared page layouts
+├── pages/              # Route-level components
+└── sections/           # Landing-page sections
 ```
 
 ## Scripts

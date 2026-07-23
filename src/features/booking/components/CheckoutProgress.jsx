@@ -5,7 +5,7 @@ const steps = [
   { label: "Confirmed", icon: "fa-circle-check" },
 ];
 
-export default function CheckoutSteps({ current = 1 }) {
+export default function CheckoutProgress({ current = 1 }) {
   return (
     <nav aria-label="Checkout progress" className="mx-auto mb-12 max-w-4xl">
       <ol className="grid grid-cols-4">
