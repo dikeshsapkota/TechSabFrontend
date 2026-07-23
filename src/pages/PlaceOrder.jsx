@@ -25,7 +25,7 @@ export default function PlaceOrder() {
     <SiteLayout>
       <section className="section-padding">
         <div className="mx-auto max-w-3xl">
-          <CheckoutProgress current={3} />
+          <CheckoutProgress current={state.succeeded ? 4 : 3} />
           <PreviousStepLink to={getCheckoutUrl(plan.id, discounted)}>
             Previous step: review order
           </PreviousStepLink>

@@ -5,8 +5,8 @@ import services from "../data/services";
 
 export default function ServicesPage() {
   return (
-    <SiteLayout>
-      <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-blue-700 px-4 py-20 text-white">
+    <SiteLayout overlayHeader>
+      <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-blue-700 px-4 pb-20 pt-36 text-white">
         <div className="container-max text-center">
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-blue-200">What we do</span>
           <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">Services built around your goals</h1>

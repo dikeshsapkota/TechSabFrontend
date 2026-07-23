@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const NAV_LINKS = [
   { label: "Home",     to: "/"         },
@@ -11,6 +11,8 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen]   = useState(false);
   const [scrolled, setScrolled]   = useState(false);
+  const location = useLocation();
+  const useLightText = ["/about", "/services"].includes(location.pathname) && !scrolled;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -21,12 +23,14 @@ export default function Navbar() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur shadow-sm" : "bg-transparent"}`}>
       <nav className="container-max flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16" aria-label="Main navigation">
-<Link
-  to="/"
-  className="text-3xl font-black tracking-tight bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
->
-  Techsab
-</Link>
+        <Link
+          to="/"
+          className={`text-3xl font-black tracking-tight transition-all duration-300 hover:scale-105 ${
+            useLightText ? "text-white" : "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"
+          }`}
+        >
+          Techsab
+        </Link>
 
         {/* Desktop nav */}
         <ul className="hidden md:flex items-center gap-8">
@@ -35,7 +39,9 @@ export default function Navbar() {
               <NavLink
                 to={l.to}
                 className={({ isActive }) => `text-sm font-medium transition-colors ${
-                  isActive ? "text-blue-600" : "text-gray-600 hover:text-blue-600"
+                  useLightText
+                    ? isActive ? "text-white" : "text-blue-100 hover:text-white"
+                    : isActive ? "text-blue-600" : "text-gray-600 hover:text-blue-600"
                 }`}
               >
                 {l.label}
@@ -46,10 +52,14 @@ export default function Navbar() {
 
         {/* Auth buttons */}
         <div className="hidden md:flex items-center gap-3">
-          <Link to="/login" className="text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors px-4 py-2 rounded-xl hover:bg-blue-50">
+          <Link to="/login" className={`rounded-xl px-4 py-2 text-sm font-semibold transition-colors ${
+            useLightText ? "text-white hover:bg-white/10" : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+          }`}>
             Log in
           </Link>
-          <Link to="/register" className="text-sm font-semibold bg-blue-600 text-white px-5 py-2 rounded-xl hover:bg-blue-700 transition-colors shadow-sm">
+          <Link to="/register" className={`rounded-xl px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors ${
+            useLightText ? "border border-white/30 bg-white/10 hover:bg-white/20" : "bg-blue-600 hover:bg-blue-700"
+          }`}>
             Get Started
           </Link>
         </div>
@@ -57,7 +67,9 @@ export default function Navbar() {
         {/* Hamburger */}
         <button
           onClick={() => setMenuOpen((o) => !o)}
-          className="md:hidden flex items-center justify-center h-10 w-10 rounded-lg text-gray-600 hover:bg-gray-100 transition"
+          className={`md:hidden flex h-10 w-10 items-center justify-center rounded-lg transition ${
+            useLightText ? "text-white hover:bg-white/10" : "text-gray-600 hover:bg-gray-100"
+          }`}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
         >

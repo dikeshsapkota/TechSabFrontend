@@ -27,8 +27,8 @@ const APPROACH = [
 
 export default function AboutPage() {
   return (
-    <SiteLayout>
-      <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-blue-700 px-4 py-20 text-white">
+    <SiteLayout overlayHeader>
+      <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-blue-700 px-4 pb-20 pt-36 text-white">
         <div className="container-max max-w-4xl text-center">
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-blue-200">About Techsab</span>
           <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">A practical technology partner for ambitious businesses</h1>
