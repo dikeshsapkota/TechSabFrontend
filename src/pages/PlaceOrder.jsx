@@ -1,4 +1,5 @@
 import { Navigate, useSearchParams } from "react-router-dom";
+import { useForm, ValidationError } from "@formspree/react";
 import SiteLayout from "../layouts/SiteLayout";
 import CheckoutProgress from "../features/booking/components/CheckoutProgress";
 import OrderFormField from "../features/booking/components/OrderFormField";
@@ -14,11 +15,11 @@ import {
 
 export default function PlaceOrder() {
   const [params] = useSearchParams();
+  const [state, handleSubmit] = useForm("mvzewoej");
   const plan = findPackage(params.get("plan"));
   if (!plan) return <Navigate to="/website-packages" replace />;
   const discounted = hasPromoDiscount(params.get("discount"));
   const total = discounted ? getDiscountedPrice(plan.amount) : plan.amount;
-  const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/your-form-id";
 
   return (
     <SiteLayout>
@@ -33,7 +34,14 @@ export default function PlaceOrder() {
             <h1 className="mt-3 text-4xl font-extrabold text-gray-900">Place your order</h1>
             <p className="mt-3 text-gray-600">Send your project details and our team will contact you to confirm the booking.</p>
           </div>
-          <form action={endpoint} method="POST" className="mt-10 rounded-3xl border border-gray-200 bg-white p-7 shadow-sm sm:p-10">
+          {state.succeeded ? (
+            <div className="mt-10 rounded-3xl border border-green-200 bg-green-50 p-10 text-center">
+              <i className="fa-solid fa-circle-check text-4xl text-green-600" />
+              <h2 className="mt-4 text-2xl font-bold text-gray-900">Order request sent!</h2>
+              <p className="mt-2 text-gray-600">Thanks! Our team will contact you to confirm your booking.</p>
+            </div>
+          ) : (
+          <form onSubmit={handleSubmit} className="mt-10 rounded-3xl border border-gray-200 bg-white p-7 shadow-sm sm:p-10">
             <input type="hidden" name="package" value={plan.name} />
             <input type="hidden" name="promo_code" value={discounted ? PROMO_CODE : "None"} />
             <input type="hidden" name="final_price" value={formatPrice(total)} />
@@ -59,10 +67,12 @@ export default function PlaceOrder() {
               rows="5"
               placeholder="Tell us about your website, goals, and preferred timeline..."
             />
-            <button type="submit" className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-4 font-semibold text-white hover:bg-blue-700">
-              Place order <i className="fa-solid fa-paper-plane" />
+            <ValidationError errors={state.errors} className="mt-5 text-sm text-red-600" />
+            <button type="submit" disabled={state.submitting} className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-4 font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60">
+              {state.submitting ? "Sending…" : "Place order"} <i className={state.submitting ? "fa-solid fa-spinner animate-spin" : "fa-solid fa-paper-plane"} />
             </button>
           </form>
+          )}
         </div>
       </section>
     </SiteLayout>

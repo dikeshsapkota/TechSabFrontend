@@ -55,6 +55,6 @@ src/
 
 ## Notes
 
-- Copy `.env.example` to `.env` and replace `your-form-id` with your Formspree form ID to receive package booking emails
+- Contact and package booking forms submit through Formspree form `mvzewoej`
 - The website package promo code is `TEEJ10`
 - All validation is client-side
