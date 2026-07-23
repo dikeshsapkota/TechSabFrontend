@@ -2,6 +2,7 @@ const websitePackages = [
   {
     id: 1,
     name: "Basic Website",
+    amount: 12500,
     price: "Rs. 12,500",
     badge: null,
     featured: false,
@@ -19,6 +20,7 @@ const websitePackages = [
   {
     id: 2,
     name: "Modern Website",
+    amount: 25999,
     price: "Rs. 25,999",
     badge: "Popular",
     featured: true,
@@ -37,6 +39,7 @@ const websitePackages = [
   {
     id: 3,
     name: "Advanced Website",
+    amount: 55000,
     price: "Rs. 55,000",
     badge: "Best Value",
     featured: true,
@@ -58,6 +61,7 @@ const websitePackages = [
   {
     id: 4,
     name: "Premium Website",
+    amount: 99999,
     price: "Rs. 99,999",
     badge: "Premium",
     featured: true,

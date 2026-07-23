@@ -1,6 +1,7 @@
 const services = [
   {
     id: 9,
+    slug: "website-development",
     icon: "fa-solid fa-globe",
     title: "Website Development",
     description:
@@ -8,6 +9,7 @@ const services = [
   },
   {
     id: 1,
+    slug: "ai-strategy",
     icon: "fa-solid fa-brain",
     title: "AI Strategy",
     description:
@@ -15,6 +17,7 @@ const services = [
   },
   {
     id: 2,
+    slug: "cloud-architecture",
     icon: "fa-solid fa-cloud",
     title: "Cloud Architecture",
     description:
@@ -22,6 +25,7 @@ const services = [
   },
   {
     id: 3,
+    slug: "product-development",
     icon: "fa-solid fa-mobile-screen",
     title: "Product Development",
     description:
@@ -29,6 +33,7 @@ const services = [
   },
   {
     id: 4,
+    slug: "cybersecurity",
     icon: "fa-solid fa-shield-halved",
     title: "Cybersecurity",
     description:
@@ -36,6 +41,7 @@ const services = [
   },
   {
     id: 5,
+    slug: "data-analytics",
     icon: "fa-solid fa-chart-line",
     title: "Data & Analytics",
     description:
@@ -43,6 +49,7 @@ const services = [
   },
   {
     id: 6,
+    slug: "accounting-tax-solutions",
     icon: "fa-solid fa-calculator",
     title: "Accounting and Tax Solutions",
     description:
@@ -50,6 +57,7 @@ const services = [
   },
   {
     id: 7,
+    slug: "bookkeeping",
     icon: "fa-solid fa-book",
     title: "Bookkeeping",
     description:
@@ -57,6 +65,7 @@ const services = [
   },
   {
     id: 8,
+    slug: "desktop-application-software",
     icon: "fa-solid fa-desktop",
     title: "Desktop Application Based Software",
     description:
@@ -64,6 +73,7 @@ const services = [
   },
   {
     id: 10,
+    slug: "technical-support",
     icon: "fa-solid fa-headset",
     title: "Technical Support",
     description:

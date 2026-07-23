@@ -3,8 +3,8 @@ import InputField from "../components/InputField";
 import Button from "../components/Button";
 
 const CONTACT_INFO = [
-  { icon: "fa-solid fa-envelope",       label: "Email",   value: "hello@techsab.io"     },
-  { icon: "fa-solid fa-phone",          label: "Phone",   value: "+977 123456789"     },
+  { icon: "fa-solid fa-envelope",       label: "Email",   value: "info.laxmiprasadrimal@gmail.com"     },
+  { icon: "fa-solid fa-phone",          label: "Phone",   value: "+977 9763524963"     },
   { icon: "fa-solid fa-location-dot",   label: "Address", value: "Arjundhara,Jhapa" },
 ];
 

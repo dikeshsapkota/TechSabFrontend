@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
+import Navbar from "../components/Navbar";
 
 const INITIAL = { name: "", email: "", phone: "", password: "", confirmPassword: "", terms: false };
 
@@ -55,7 +56,9 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex bg-gray-50">
+    <>
+      <Navbar />
+      <div className="min-h-screen flex bg-gray-50 pt-16">
       {/* Left panel */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 flex-col items-center justify-center p-16 text-white relative overflow-hidden">
         <div className="absolute bottom-1/3 -right-16 h-64 w-64 rounded-full bg-cyan-500/15 blur-3xl" aria-hidden="true"></div>
@@ -179,6 +182,7 @@ export default function Register() {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

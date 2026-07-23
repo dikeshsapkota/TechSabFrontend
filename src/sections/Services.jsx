@@ -1,32 +1,12 @@
-import { useState } from "react";
+import { useRef } from "react";
 import services from "../data/services";
 import ServiceCard from "../components/ServiceCard";
-import PricingModal from "../components/PricingModal";
 
 export default function Services() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = () => setIsModalOpen(true);
-  const handleCloseModal = () => setIsModalOpen(false);
-
-  const renderServiceCards = (isDuplicate = false) =>
-    services.map((service) => (
-      <div
-        key={`${isDuplicate ? "duplicate" : "original"}-${service.id}`}
-        className="w-[280px] flex-shrink-0 sm:w-[320px]"
-        aria-hidden={isDuplicate ? "true" : undefined}
-      >
-        <ServiceCard
-          icon={service.icon}
-          title={service.title}
-          description={service.description}
-          showPricingButton={
-            !isDuplicate && service.title === "Website Development"
-          }
-          onPricingClick={isDuplicate ? undefined : handleOpenModal}
-        />
-      </div>
-    ));
+  const sliderRef = useRef(null);
+  const slide = (direction) => {
+    sliderRef.current?.scrollBy({ left: direction * 344, behavior: "smooth" });
+  };
 
   return (
     <section id="services" className="section-padding overflow-hidden bg-white">
@@ -47,18 +27,21 @@ export default function Services() {
         </div>
       </div>
 
-      {/* Infinite services loop */}
-      <div className="services-marquee">
-        <div className="services-marquee-track">
-          {/* Original cards */}
-          <div className="flex flex-shrink-0 gap-6">
-            {renderServiceCards(false)}
-          </div>
-
-          {/* Duplicate cards for seamless looping */}
-          <div className="flex flex-shrink-0 gap-6" aria-hidden="true">
-            {renderServiceCards(true)}
-          </div>
+      <div className="container-max">
+        <div className="mb-5 flex justify-end gap-3">
+          <button onClick={() => slide(-1)} aria-label="Previous services" className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 shadow-sm hover:border-blue-500 hover:text-blue-600">
+            <i className="fa-solid fa-arrow-left" />
+          </button>
+          <button onClick={() => slide(1)} aria-label="Next services" className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white shadow-sm hover:bg-blue-700">
+            <i className="fa-solid fa-arrow-right" />
+          </button>
+        </div>
+        <div ref={sliderRef} className="services-slider flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6">
+          {services.map((service) => (
+            <div key={service.id} className="w-[280px] flex-none snap-start sm:w-[320px]">
+              <ServiceCard {...service} />
+            </div>
+          ))}
         </div>
       </div>
 
@@ -89,11 +72,6 @@ export default function Services() {
           </a>
         </div>
       </div>
-
-      <PricingModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-      />
     </section>
   );
 }

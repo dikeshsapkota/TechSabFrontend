@@ -7,6 +7,10 @@ A responsive company website built with React, Vite, and Tailwind CSS.
 - `/` — Landing page (Hero, About, Services, Contact)
 - `/login` — Login form
 - `/register` — Registration form
+- `/services/:slug` — Individual service details
+- `/website-packages` — Website development plans
+- `/checkout?plan=1` — Package checkout and promo code
+- `/place-order?plan=1` — Final booking form
 
 ## Tech Stack
 
@@ -49,5 +53,6 @@ src/
 
 ## Notes
 
-- Forms are frontend-only (no backend connected)
+- Copy `.env.example` to `.env` and replace `your-form-id` with your Formspree form ID to receive package booking emails
+- The website package promo code is `TEEJ10`
 - All validation is client-side
