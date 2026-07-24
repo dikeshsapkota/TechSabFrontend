@@ -8,7 +8,7 @@ const NAV_LINKS = [
 ];
 
 const FEATURED_SERVICES = [
-  { label: "Website Development", to: "/services/website-development", icon: "fa-globe" },
+  { label: "Website Development", to: "/website-packages", icon: "fa-globe" },
   { label: "AI Strategy", to: "/services/ai-strategy", icon: "fa-brain" },
   { label: "Product Development", to: "/services/product-development", icon: "fa-mobile-screen" },
   { label: "Cloud Architecture", to: "/services/cloud-architecture", icon: "fa-cloud" },
