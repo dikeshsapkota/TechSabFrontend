@@ -9,11 +9,12 @@ const NAV_LINKS = [
 
 const FEATURED_SERVICES = [
   { label: "Website Development", to: "/website-packages", icon: "fa-globe" },
+    { label: "Accounting and Tax Solutions", to: "/services/accounting-tax-solutions", icon: "fa-calculator" },
+
   { label: "AI Strategy", to: "/services/ai-strategy", icon: "fa-brain" },
   { label: "Product Development", to: "/services/product-development", icon: "fa-mobile-screen" },
   { label: "Cloud Architecture", to: "/services/cloud-architecture", icon: "fa-cloud" },
   { label: "Cybersecurity", to: "/services/cybersecurity", icon: "fa-shield-halved" },
-  { label: "Accounting and Tax Solutions", to: "/services/accounting-tax-solutions", icon: "fa-calculator" },
 ];
 
 export default function Navbar() {
