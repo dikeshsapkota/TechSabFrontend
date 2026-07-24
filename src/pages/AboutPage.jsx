@@ -28,11 +28,11 @@ const APPROACH = [
 export default function AboutPage() {
   return (
     <SiteLayout overlayHeader>
-      <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-blue-700 px-4 pb-20 pt-36 text-white">
+      <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-blue-700 px-4 pb-14 pt-28 text-white sm:pb-20 sm:pt-36">
         <div className="container-max max-w-4xl text-center">
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-blue-200">About Techsab</span>
-          <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">A practical technology partner for ambitious businesses</h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-blue-100">
+          <h1 className="mt-4 text-3xl font-extrabold sm:text-5xl">A practical technology partner for ambitious businesses</h1>
+          <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-blue-100 sm:mt-6 sm:text-lg sm:leading-8">
             We bring strategy, design, engineering, and long-term support together to help organizations solve real problems and build dependable digital products.
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function AboutPage() {
             ))}
           </div>
 
-          <div className="mt-14 rounded-3xl bg-gray-900 p-8 text-white sm:flex sm:items-center sm:justify-between">
+          <div className="mt-10 rounded-3xl bg-gray-900 p-6 text-white sm:mt-14 sm:flex sm:items-center sm:justify-between sm:p-8">
             <div>
               <h2 className="text-2xl font-bold">Let’s build something useful together</h2>
               <p className="mt-2 text-gray-300">Share your goals with us and get a clear recommendation for moving forward.</p>

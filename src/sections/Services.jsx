@@ -39,7 +39,7 @@ export default function Services() {
         </div>
         <div ref={sliderRef} className="services-slider flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6">
           {services.map((service) => (
-            <div key={service.id} className="w-[280px] flex-none snap-start sm:w-[320px]">
+            <div key={service.id} className="w-[calc(100vw-3rem)] max-w-[320px] flex-none snap-start">
               <ServiceCard {...service} />
             </div>
           ))}
@@ -48,7 +48,7 @@ export default function Services() {
 
       <div className="container-max">
         {/* CTA strip */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-6 rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-10 text-white shadow-xl md:flex-row">
+        <div className="mt-10 flex flex-col items-start justify-between gap-6 rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-white shadow-xl sm:p-8 md:mt-14 md:flex-row md:items-center lg:p-10">
           <div>
             <p className="text-xl font-bold">Not sure where to start?</p>
 
@@ -59,7 +59,7 @@ export default function Services() {
 
           <Link
             to="/contact"
-            className="inline-flex flex-shrink-0 items-center gap-2 rounded-xl bg-white px-7 py-3 font-semibold text-blue-600 shadow-md transition-colors hover:bg-blue-50"
+            className="inline-flex w-full flex-shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-center font-semibold text-blue-600 shadow-md transition-colors hover:bg-blue-50 sm:w-auto sm:px-7"
           >
             Book a Free Consultation
             <i className="fa-solid fa-arrow-right" aria-hidden="true" />

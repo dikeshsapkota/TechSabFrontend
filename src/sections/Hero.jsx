@@ -23,40 +23,40 @@ export default function Hero() {
         <div className="absolute bottom-24 left-1/3 h-20 w-20 rotate-6 border border-cyan-400/30"></div>
       </div>
 
-      <div className="container-max section-padding w-full">
+      <div className="container-max section-padding w-full pb-24 sm:pb-24 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Copy */}
           <div className="flex flex-col gap-6">
-            <span className="inline-flex items-center gap-2 self-start rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-300 shadow-[0_0_25px_rgba(34,211,238,0.2)]">
+            <span className="inline-flex items-center gap-2 self-start rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-cyan-300 shadow-[0_0_25px_rgba(34,211,238,0.2)] sm:px-4 sm:text-xs sm:tracking-[0.25em]">
               <i className="fa-solid fa-circle-dot text-cyan-400 animate-pulse"></i>
               Now serving 50+ global clients
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] text-white drop-shadow-[0_0_30px_rgba(34,211,238,0.18)]">
+            <h1 className="text-4xl font-extrabold leading-[1.05] text-white drop-shadow-[0_0_30px_rgba(34,211,238,0.18)] sm:text-5xl lg:text-6xl lg:leading-[0.95]">
               Build Smarter.<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-fuchsia-500">
                 Scale Faster.
               </span>
             </h1>
-            <p className="max-w-lg text-lg leading-relaxed text-slate-300">
+            <p className="max-w-lg text-base leading-relaxed text-slate-300 sm:text-lg">
               Techsab partners with ambitious teams to design, build, and deploy technology that moves the business forward — from first prototype to production scale.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/register">
-                <Button variant="primary" className="text-base px-8 py-3.5 shadow-[0_0_25px_rgba(59,130,246,0.35)]">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+              <Link to="/register" className="w-full sm:w-auto">
+                <Button variant="primary" className="w-full px-6 py-3.5 text-base shadow-[0_0_25px_rgba(59,130,246,0.35)] sm:w-auto sm:px-8">
                   Start Your Project <i className="fa-solid fa-arrow-right"></i>
                 </Button>
               </Link>
-              <Button variant="secondary" onClick={scrollToServices} className="text-base px-8 py-3.5 border border-white/20 bg-transparent text-black shadow-none hover:bg-cyan-400/15 hover:border-cyan-300 hover:text-white hover:shadow-[0_0_20px_rgba(34,211,238,0.15)]">
+              <Button variant="secondary" onClick={scrollToServices} className="w-full border border-white/20 bg-transparent px-6 py-3.5 text-base text-black shadow-none hover:border-cyan-300 hover:bg-cyan-400/15 hover:text-white hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] sm:w-auto sm:px-8">
                 See What We Do
               </Button>
             </div>
 
             {/* Stats */}
-            <div className="mt-2 flex flex-wrap gap-8 border-t border-white/10 pt-4">
+            <div className="mt-2 grid grid-cols-3 gap-3 border-t border-white/10 pt-4 sm:flex sm:flex-wrap sm:gap-8">
               {STATS.map((s) => (
                 <div key={s.label}>
                   <p className="text-2xl font-bold text-white">{s.value}</p>
-                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{s.label}</p>
+                  <p className="text-[10px] uppercase tracking-[0.12em] text-slate-400 sm:text-xs sm:tracking-[0.3em]">{s.label}</p>
                 </div>
               ))}
             </div>

@@ -30,7 +30,7 @@ export default function CheckoutSummary({ plan, initiallyDiscounted = false }) {
   };
 
   return (
-    <aside className="h-fit rounded-3xl bg-slate-900 p-7 text-white lg:col-span-2">
+    <aside className="h-fit rounded-3xl bg-slate-900 p-5 text-white sm:p-7 lg:col-span-2">
       <h2 className="text-xl font-bold">Order summary</h2>
       <div className="mt-6 flex justify-between text-slate-300">
         <span>Package price</span>
@@ -53,7 +53,7 @@ export default function CheckoutSummary({ plan, initiallyDiscounted = false }) {
       <label htmlFor="promo" className="mt-8 block text-sm font-semibold">
         Promo code
       </label>
-      <div className="mt-2 flex gap-2">
+      <div className="mt-2 flex flex-col gap-2 min-[400px]:flex-row">
         <input
           id="promo"
           value={promo}
@@ -61,7 +61,7 @@ export default function CheckoutSummary({ plan, initiallyDiscounted = false }) {
           placeholder="ENTER CODE"
           className="min-w-0 flex-1 rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 uppercase text-white outline-none focus:border-blue-400"
         />
-        <button type="button" onClick={applyPromo} className="rounded-xl bg-white px-4 font-semibold text-slate-900">
+        <button type="button" onClick={applyPromo} className="rounded-xl bg-white px-4 py-3 font-semibold text-slate-900">
           Apply
         </button>
       </div>

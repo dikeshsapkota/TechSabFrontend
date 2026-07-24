@@ -17,7 +17,7 @@ export default function ServiceDetail() {
 
   return (
     <SiteLayout>
-      <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-blue-700 px-4 py-20 text-white">
+      <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-blue-700 px-4 py-14 text-white sm:py-20">
         <div className="container-max">
           <Link to="/services" className="text-sm font-semibold text-blue-200 hover:text-white">
             <i className="fa-solid fa-arrow-left mr-2" />All services
@@ -26,8 +26,8 @@ export default function ServiceDetail() {
             <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-3xl">
               <i className={service.icon} />
             </div>
-            <h1 className="text-4xl font-extrabold sm:text-5xl">{service.title}</h1>
-            <p className="mt-6 text-lg leading-8 text-blue-100">{service.description}</p>
+            <h1 className="break-words text-3xl font-extrabold sm:text-5xl">{service.title}</h1>
+            <p className="mt-5 text-base leading-7 text-blue-100 sm:mt-6 sm:text-lg sm:leading-8">{service.description}</p>
           </div>
         </div>
       </section>
@@ -43,7 +43,7 @@ export default function ServiceDetail() {
               Every engagement is tailored—no unnecessary features, unclear handoffs, or one-size-fits-all recommendations.
             </p>
           </div>
-          <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm">
+          <div className="rounded-3xl border border-gray-100 bg-white p-6 shadow-sm sm:p-8">
             <h3 className="text-xl font-bold text-gray-900">What you can expect</h3>
             <ul className="mt-6 space-y-5">
               {outcomes.map((outcome) => (
@@ -55,7 +55,7 @@ export default function ServiceDetail() {
             </ul>
           </div>
         </div>
-        <div className="container-max mt-12 rounded-3xl bg-blue-600 p-8 text-white sm:flex sm:items-center sm:justify-between">
+        <div className="container-max mt-12 rounded-3xl bg-blue-600 p-6 text-white sm:flex sm:items-center sm:justify-between sm:p-8">
           <div>
             <h2 className="text-2xl font-bold">{isWebsite ? "Find the right website package" : `Ready to discuss ${service.title}?`}</h2>
             <p className="mt-2 text-blue-100">{isWebsite ? "Compare deliverables and choose a plan for your project." : "Tell us what you need and we’ll recommend the best next step."}</p>

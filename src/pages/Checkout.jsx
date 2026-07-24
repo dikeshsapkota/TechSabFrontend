@@ -22,8 +22,8 @@ export default function Checkout() {
           <div className="grid gap-10 lg:grid-cols-5">
             <div className="lg:col-span-3">
               <span className="text-xs font-bold uppercase tracking-widest text-blue-600">Checkout</span>
-              <h1 className="mt-3 text-4xl font-extrabold text-gray-900">Review your package</h1>
-              <div className="mt-8 rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+              <h1 className="mt-3 text-3xl font-extrabold text-gray-900 sm:text-4xl">Review your package</h1>
+              <div className="mt-8 rounded-3xl border border-gray-200 bg-white p-5 shadow-sm sm:p-8">
                 <h2 className="text-2xl font-bold text-gray-900">{plan.name}</h2>
                 <p className="mt-2 text-gray-500">One-time website development project</p>
                 <ul className="mt-6 grid gap-3 sm:grid-cols-2">

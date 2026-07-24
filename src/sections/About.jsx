@@ -16,7 +16,7 @@ export default function About() {
     <section id="about" className="section-padding bg-gray-50">
       <div className="container-max">
         {/* Heading */}
-        <div className="text-center mb-16">
+        <div className="mb-10 text-center sm:mb-16">
           <span className="text-xs font-semibold uppercase tracking-widest text-blue-600">Who We Are</span>
           <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold text-gray-900">
             Technology that works as hard as you do
@@ -26,11 +26,11 @@ export default function About() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+        <div className="mb-14 grid grid-cols-1 items-center gap-10 lg:mb-20 lg:grid-cols-2 lg:gap-16">
           {/* Visual */}
-          <div className="scale-card-wrap relative z-10 lg:aspect-[4/3]">
+          <div className="scale-card-wrap relative z-10 hidden lg:block lg:aspect-[4/3]">
             <div
-              className="scale-flip-card min-h-[500px] sm:min-h-[440px] lg:h-full lg:min-h-0"
+              className="scale-flip-card min-h-[560px] min-[400px]:min-h-[520px] sm:min-h-[440px] lg:h-full lg:min-h-0"
               tabIndex={0}
               aria-label="Built to Scale. Hover or focus to learn more."
             >
@@ -38,7 +38,7 @@ export default function About() {
                 <div className="scale-flip-face scale-flip-front">
                   <div className="scale-flip-glow scale-flip-glow-one"></div>
                   <div className="scale-flip-glow scale-flip-glow-two"></div>
-                  <div className="relative z-10 text-center text-white p-8">
+                  <div className="relative z-10 p-5 text-center text-white sm:p-8">
                     <i className="fa-solid fa-rocket text-6xl mb-4 opacity-90"></i>
                     <p className="text-xl font-bold">Built to Scale</p>
                     <p className="text-sm text-blue-100 mt-2">Enterprise-grade from day one</p>
@@ -84,7 +84,7 @@ export default function About() {
               </div>
             </div>
             {/* Floating card */}
-            <div className="scale-cert-badge absolute -right-6 top-8 rounded-2xl bg-white p-4 shadow-xl border border-gray-100">
+            <div className="scale-cert-badge absolute -right-6 top-8 rounded-2xl border border-gray-100 bg-white p-4 shadow-xl">
               <div className="flex items-center gap-3">
                 <div className="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center">
                   <i className="fa-solid fa-shield-halved text-blue-600"></i>
@@ -128,9 +128,9 @@ export default function About() {
         </div>
 
         {/* Achievements */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
           {ACHIEVEMENTS.map((a) => (
-            <div key={a.label} className="flex flex-col items-center gap-3 rounded-2xl bg-white border border-gray-100 p-8 text-center shadow-sm hover:shadow-md transition-shadow">
+            <div key={a.label} className="flex flex-col items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 text-center shadow-sm transition-shadow hover:shadow-md sm:p-8">
               <div className="h-12 w-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 text-xl">
                 <i className={a.icon}></i>
               </div>

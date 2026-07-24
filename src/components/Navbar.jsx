@@ -13,10 +13,12 @@ const FEATURED_SERVICES = [
   { label: "Product Development", to: "/services/product-development", icon: "fa-mobile-screen" },
   { label: "Cloud Architecture", to: "/services/cloud-architecture", icon: "fa-cloud" },
   { label: "Cybersecurity", to: "/services/cybersecurity", icon: "fa-shield-halved" },
+  { label: "Accounting and Tax Solutions", to: "/services/accounting-tax-solutions", icon: "fa-calculator" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen]   = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled]   = useState(false);
   const location = useLocation();
   const useLightText = ["/about", "/services"].includes(location.pathname) && !scrolled;
@@ -40,7 +42,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-5 xl:gap-8">
           {NAV_LINKS.slice(0, 2).map((l) => (
             <li key={l.label}>
               <NavLink
@@ -102,7 +104,7 @@ export default function Navbar() {
         </ul>
 
         {/* Auth buttons */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-2 xl:gap-3">
           <Link to="/login" className={`rounded-xl px-4 py-2 text-sm font-semibold transition-colors ${
             useLightText ? "text-white hover:bg-white/10" : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
           }`}>
@@ -117,8 +119,11 @@ export default function Navbar() {
 
         {/* Hamburger */}
         <button
-          onClick={() => setMenuOpen((o) => !o)}
-          className={`md:hidden flex h-10 w-10 items-center justify-center rounded-lg transition ${
+          onClick={() => {
+            setMenuOpen((open) => !open);
+            if (menuOpen) setServicesOpen(false);
+          }}
+          className={`flex h-10 w-10 items-center justify-center rounded-lg transition lg:hidden ${
             useLightText ? "text-white hover:bg-white/10" : "text-gray-600 hover:bg-gray-100"
           }`}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -130,8 +135,8 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
-          <ul className="flex flex-col px-4 py-4 gap-1">
+        <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-gray-100 bg-white shadow-lg lg:hidden">
+          <ul className="flex flex-col gap-1 px-4 py-4 sm:px-6">
             {NAV_LINKS.slice(0, 2).map((l) => (
               <li key={l.label}>
                 <NavLink
@@ -145,25 +150,46 @@ export default function Navbar() {
                 </NavLink>
               </li>
             ))}
-            <li className="mx-4 border-l-2 border-blue-100 pl-3">
-              <Link
-                to="/services"
-                onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-between px-2 py-2 text-xs font-bold uppercase tracking-wider text-blue-600"
+            <li>
+              <button
+                type="button"
+                onClick={() => setServicesOpen((open) => !open)}
+                className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-medium text-gray-700 transition hover:bg-blue-50 hover:text-blue-600"
+                aria-expanded={servicesOpen}
+                aria-controls="mobile-services-menu"
               >
-                Services <i className="fa-solid fa-arrow-right" />
-              </Link>
-              {FEATURED_SERVICES.map((service) => (
-                <Link
-                  key={service.to}
-                  to={service.to}
-                  onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-gray-600 transition hover:bg-blue-50 hover:text-blue-600"
-                >
-                  <i className={`fa-solid ${service.icon} w-5 text-center text-blue-500`} />
-                  {service.label}
-                </Link>
-              ))}
+                Services
+                <i className={`fa-solid fa-chevron-down text-xs transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
+              </button>
+              {servicesOpen && (
+                <div id="mobile-services-menu" className="ml-4 border-l-2 border-blue-100 pb-2 pl-3">
+                  {FEATURED_SERVICES.map((service) => (
+                    <Link
+                      key={service.to}
+                      to={service.to}
+                      onClick={() => {
+                        setMenuOpen(false);
+                        setServicesOpen(false);
+                      }}
+                      className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-gray-600 transition hover:bg-blue-50 hover:text-blue-600"
+                    >
+                      <i className={`fa-solid ${service.icon} w-5 text-center text-blue-500`} />
+                      {service.label}
+                    </Link>
+                  ))}
+                  <Link
+                    to="/services"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setServicesOpen(false);
+                    }}
+                    className="mt-1 flex items-center gap-2 rounded-lg px-2 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-50"
+                  >
+                    <i className="fa-solid fa-border-all w-5 text-center" />
+                    View all services
+                  </Link>
+                </div>
+              )}
             </li>
             {NAV_LINKS.slice(2).map((l) => (
               <li key={l.label}>
@@ -178,14 +204,6 @@ export default function Navbar() {
                 </NavLink>
               </li>
             ))}
-            <li className="border-t border-gray-100 mt-2 pt-2 flex flex-col gap-2">
-              <Link to="/login" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-xl text-sm font-semibold text-blue-600 hover:bg-blue-50 transition">
-                Log in
-              </Link>
-              <Link to="/register" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-xl text-sm font-semibold bg-blue-600 text-white text-center hover:bg-blue-700 transition">
-                Get Started
-              </Link>
-            </li>
           </ul>
         </div>
       )}

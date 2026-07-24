@@ -52,13 +52,13 @@ export default function Contact() {
   return (
     <section id="contact" className="section-padding bg-gray-50">
       <div className="container-max">
-        <div className="text-center mb-14">
+        <div className="mb-10 text-center sm:mb-14">
           <span className="text-xs font-semibold uppercase tracking-widest text-blue-600">Get In Touch</span>
           <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold text-gray-900">Let's start a conversation</h2>
           <p className="mt-4 text-gray-500 max-w-xl mx-auto">Have a project in mind? We'd love to hear about it. Send us a message and we'll get back to you within one business day.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-12">
           {/* Contact info */}
           <div className="lg:col-span-2 flex flex-col gap-8">
             <div className="flex flex-col gap-5">
@@ -96,7 +96,7 @@ export default function Contact() {
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-3 rounded-3xl bg-white border border-gray-100 p-8 shadow-sm">
+          <div className="rounded-3xl border border-gray-100 bg-white p-5 shadow-sm sm:p-8 lg:col-span-3">
             {state.succeeded ? (
               <div className="flex flex-col items-center justify-center h-full gap-4 py-12 text-center">
                 <div className="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center">

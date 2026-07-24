@@ -31,17 +31,17 @@ export default function PlaceOrder() {
           </PreviousStepLink>
           <div className="text-center">
             <span className="text-xs font-bold uppercase tracking-widest text-blue-600">Final step</span>
-            <h1 className="mt-3 text-4xl font-extrabold text-gray-900">Place your order</h1>
+            <h1 className="mt-3 text-3xl font-extrabold text-gray-900 sm:text-4xl">Place your order</h1>
             <p className="mt-3 text-gray-600">Send your project details and our team will contact you to confirm the booking.</p>
           </div>
           {state.succeeded ? (
-            <div className="mt-10 rounded-3xl border border-green-200 bg-green-50 p-10 text-center">
+            <div className="mt-10 rounded-3xl border border-green-200 bg-green-50 p-6 text-center sm:p-10">
               <i className="fa-solid fa-circle-check text-4xl text-green-600" />
               <h2 className="mt-4 text-2xl font-bold text-gray-900">Order request sent!</h2>
               <p className="mt-2 text-gray-600">Thanks! Our team will contact you to confirm your booking.</p>
             </div>
           ) : (
-          <form onSubmit={handleSubmit} className="mt-10 rounded-3xl border border-gray-200 bg-white p-7 shadow-sm sm:p-10">
+          <form onSubmit={handleSubmit} className="mt-10 rounded-3xl border border-gray-200 bg-white p-5 shadow-sm sm:p-10">
             <input type="hidden" name="package" value={plan.name} />
             <input type="hidden" name="promo_code" value={discounted ? PROMO_CODE : "None"} />
             <input type="hidden" name="final_price" value={formatPrice(total)} />
